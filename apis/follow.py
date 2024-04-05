@@ -1,8 +1,9 @@
 from flask import (jsonify, abort, g)
 from flask_jwt_extended import (get_jwt_identity, jwt_required)
 from dotenv import load_dotenv, dotenv_values
-from models.model import User, db, Follow
+from app.models.model import User, db, Follow
 load_dotenv()
+
 
 from flask import Blueprint
 bp = Blueprint('follow', __name__)

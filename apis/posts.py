@@ -2,11 +2,12 @@ import os
 from flask import (request,jsonify, abort, g, send_from_directory)
 from flask_jwt_extended import (get_jwt_identity, jwt_required)
 from dotenv import load_dotenv, dotenv_values
-from apis.utils.decorator import roles_required
-from models.model import User, db, Post, Comment, Liked_Post
+from app.utils.decorator import roles_required
+from app.models.model import User, db, Post, Comment, Liked_Post
 load_dotenv()
+
 from flask import Blueprint
-from config import Config
+from app.config import Configuration
 bp = Blueprint('post', __name__)
 @bp.route('/posts', methods=['POST'])
 @jwt_required()

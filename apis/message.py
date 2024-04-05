@@ -2,11 +2,12 @@ from email.message import Message
 from flask import (request,jsonify, abort)
 from flask_jwt_extended import (get_jwt_identity, jwt_required)
 from dotenv import load_dotenv, dotenv_values
-from models.model import User, db
+from app.models.model import User, db
 load_dotenv()
+
 from flask_socketio import SocketIO, emit
 from flask import Blueprint
-from config import Config
+from app.config import Configuration
 socketio = SocketIO()
 bp = Blueprint('messages', __name__)
 

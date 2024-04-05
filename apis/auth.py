@@ -4,15 +4,17 @@ from flask_jwt_extended import (create_access_token, get_jwt_identity, jwt_requi
 import base64 
 from werkzeug.security import generate_password_hash
 from dotenv import load_dotenv, dotenv_values
-from models.model import User, db
-from __init__ import mail
+from app.models.model import User, db
+from app.utils.helper import ROLES_PERMISSIONS
+
 load_dotenv()
 import os
 import re
 from werkzeug.security import (check_password_hash, generate_password_hash)
 from werkzeug.utils import (secure_filename)
 from flask import Blueprint
-from config import Config
+from app.config import Configuration
+from app import mail
 email_validation = r'^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$'
 bp = Blueprint('auth', __name__)
 
@@ -73,7 +75,7 @@ def login():
 def update_profile_picture():
     current_user_id = get_jwt_identity()
     user = User.query.get(current_user_id)
-
+    
     if not user:
         abort(404, 'user not found')
 

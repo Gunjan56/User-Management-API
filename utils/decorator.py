@@ -1,7 +1,7 @@
 from functools import wraps
-from models.model import User
+from app.models.model import User
 from flask_jwt_extended import get_jwt_identity
-from flask import abort, Blueprint
+from flask import abort
 
 def roles_required(*roles):
     def wrapper(fn):

@@ -1,9 +1,9 @@
 from flask import (request,jsonify, abort, g)
 from dotenv import load_dotenv, dotenv_values
-from models.model import User, db, Post
+from app.models.model import User, db, Post
 load_dotenv()
 from flask import Blueprint
-from config import Config
+from app.config import Configuration
 
 bp = Blueprint('search', __name__)
 
